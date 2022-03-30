@@ -1,6 +1,6 @@
 module.exports = {
     async up (queryInterface, DataTypes) {
-        return queryInterface.createTable('ConnectCulto', {
+        return queryInterface.createTable('connectCulto', {
             createdAt: {
                 type: DataTypes.DATE,
                 allowNull: false
@@ -9,13 +9,13 @@ module.exports = {
                 type: DataTypes.DATE,
                 allowNull: false
             },
-            ConnectId: {
+            connectId: {
                 type: DataTypes.INTEGER,
-                references: { model: 'Connect', key: 'id' }
+                references: { model: 'connect', key: 'id' }
             },
-            CultoId: {
+            cultoId: {
                 type: DataTypes.INTEGER,
-                references: { model: 'Culto', key: 'id' }
+                references: { model: 'culto', key: 'id' }
             },
             numeroPulseira: {
                 type: DataTypes.INTEGER,
@@ -25,6 +25,6 @@ module.exports = {
     },
 
     async down (queryInterface) {
-        return queryInterface.dropTable('ConnectCulto')
+        return queryInterface.dropTable('connectCulto')
     }
 }

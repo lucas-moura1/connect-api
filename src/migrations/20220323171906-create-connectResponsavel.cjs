@@ -1,6 +1,6 @@
 module.exports = {
     async up (queryInterface, DataTypes) {
-        return queryInterface.createTable('ConnectResponsavel', {
+        return queryInterface.createTable('connectResponsavel', {
             createdAt: {
                 allowNull: false,
                 type: DataTypes.DATE
@@ -9,18 +9,18 @@ module.exports = {
                 allowNull: false,
                 type: DataTypes.DATE
             },
-            ConnectId: {
+            connectId: {
                 type: DataTypes.INTEGER,
-                references: { model: 'Connect', key: 'id' }
+                references: { model: 'connect', key: 'id' }
             },
-            ResponsavelId: {
+            responsavelId: {
                 type: DataTypes.INTEGER,
-                references: { model: 'Responsavel', key: 'id' }
+                references: { model: 'responsavel', key: 'id' }
             }
         })
     },
 
     async down (queryInterface) {
-        return queryInterface.dropTable('ConnectResponsavel')
+        return queryInterface.dropTable('connectResponsavel')
     }
 }

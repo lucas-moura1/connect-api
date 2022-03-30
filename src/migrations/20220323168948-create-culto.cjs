@@ -1,6 +1,6 @@
 module.exports = {
     async up (queryInterface, DataTypes) {
-        return queryInterface.createTable('Culto', {
+        return queryInterface.createTable('culto', {
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
@@ -27,6 +27,6 @@ module.exports = {
     },
 
     async down (queryInterface) {
-        return queryInterface.dropTable('Culto')
+        return queryInterface.dropTable('culto')
     }
 }

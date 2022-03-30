@@ -1,6 +1,6 @@
 module.exports = {
     async up (queryInterface, DataTypes) {
-        return queryInterface.createTable('Responsavel', {
+        return queryInterface.createTable('responsavel', {
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
@@ -31,6 +31,6 @@ module.exports = {
     },
 
     async down (queryInterface) {
-        return queryInterface.dropTable('Responsavel')
+        return queryInterface.dropTable('responsavel')
     }
 }

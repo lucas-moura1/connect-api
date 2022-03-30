@@ -1,6 +1,6 @@
 module.exports = {
     async up (queryInterface, DataTypes) {
-        return queryInterface.createTable('Connect', {
+        return queryInterface.createTable('connect', {
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
@@ -27,6 +27,6 @@ module.exports = {
     },
 
     async down (queryInterface) {
-        return queryInterface.dropTable('Connect')
+        return queryInterface.dropTable('connect')
     }
 }
