@@ -10,7 +10,7 @@ const getAll = async () => {
     try {
         logger.info('[CULT REPOSITORY] Getting all cults')
 
-        const cults = await Culto.findAll({ include: [Connect, Responsavel] })
+        const cults = await Culto.findAll({ include: [Connect] })
 
         return cults
     } catch (error) {
@@ -40,7 +40,7 @@ const getOne = async (id) => {
     }
 }
 
-const create = async (datas, hasRelationship = false) => {
+const create = async (datas) => {
     try {
         logger.info('[CULT REPOSITORY] Creating a cult')
 
