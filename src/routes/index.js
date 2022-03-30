@@ -10,9 +10,12 @@ route.get('/health', (req, res) => {
 })
 
 route.get('/cult', cultController.getAllCult)
+route.get('/cult/:id', cultController.getCult)
 route.post('/cult', cultController.createCult)
+
 route.get('/connect', connectController.getAllConnectors)
 route.post('/connect', connectController.createConnect)
+
 route.post('/responsable', responsableController.createConnect)
 
 export default route

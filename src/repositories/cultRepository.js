@@ -22,18 +22,26 @@ const getAll = async () => {
     }
 }
 
-const getOne = async (id) => {
+const getOne = async (id, hasRelationship = false) => {
     try {
         logger.info('[CULT REPOSITORY] Getting a cult')
 
+        const relationship = hasRelationship
+            ? {
+                model: Connect,
+                include: Responsavel
+            }
+            : []
+
         const cult = await Culto.findOne({
-            where: { id }
+            where: { id },
+            include: relationship
         })
 
         return cult
     } catch (error) {
         logger.error(
-            `[CULT REPOSITORY] Error to getting all cult >> ${JSON.stringify(error)}`
+            `[CULT REPOSITORY] Error to getting a cult >> ${JSON.stringify(error)}`
         )
 
         throw new RequestError()

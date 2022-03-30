@@ -17,6 +17,22 @@ const getAllCults = async () => {
     }
 }
 
+const getCult = async (cultId, query) => {
+    try {
+        logger.info(`[CULT SERVICE] Process to get cult with id: ${cultId}`)
+
+        const hasRelationship = !!query?.relationship
+
+        const cult = await cultRepository.getOne(cultId, hasRelationship)
+
+        return cult
+    } catch (error) {
+        logger.error(`[CULT SERVICE] Error >> ${JSON.stringify(error)}`)
+
+        throw error
+    }
+}
+
 const createCult = async (cultDatas) => {
     try {
         logger.info('[CULT SERVICE] Process to create a cult')
@@ -33,5 +49,6 @@ const createCult = async (cultDatas) => {
 
 export {
     getAllCults,
+    getCult,
     createCult
 }
