@@ -23,7 +23,7 @@ const connectSchema = yup.object().shape({
         .string()
         .matches(/(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/)
         .required(),
-    responsavel: yup.array().of(responsableSchema)
+    responsavels: yup.array().of(responsableSchema)
 })
 
 const cultSchema = yup.object().shape({
