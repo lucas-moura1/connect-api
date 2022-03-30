@@ -21,7 +21,7 @@ const createConnect = async (connectDatas) => {
     try {
         logger.info('[CONNECT SERVICE] Process to create a connect')
 
-        const hasResponsableRelationship = !!connectDatas.connect.responsavel
+        const hasResponsableRelationship = !!connectDatas.connect.responsavels
 
         const connect = await connectRepository.create(
             connectDatas.connect,
