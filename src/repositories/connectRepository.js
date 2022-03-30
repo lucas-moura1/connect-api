@@ -6,7 +6,7 @@ const getAll = async () => {
     try {
         logger.info('[CONNECT REPOSITORY] Getting all connectors')
 
-        const connectors = await Connect.findAll()
+        const connectors = await Connect.findAll({ include: [Responsavel] })
 
         return connectors
     } catch (error) {
@@ -24,14 +24,7 @@ const create = async (datas, hasRelationship = false) => {
 
         const relationship = hasRelationship ? { include: Responsavel } : {}
 
-        console.log(datas, relationship)
-
-        const connect = await Connect.create(
-            datas,
-            {
-                include: Responsavel
-            }
-        )
+        const connect = await Connect.create(datas, relationship)
 
         return connect
     } catch (error) {
