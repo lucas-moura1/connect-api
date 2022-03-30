@@ -8,11 +8,9 @@ services:
         - /usr/app/node_modules
     environment:
         NODE_ENV: "development"
-        # DB_MONGODB_NAME_TEST: "currency_api_test"
-        MYSQL_ROOT_PASSWORD: "admin"
-        MYSQL_USER: "test"
+        MYSQL_USER: "root"
         MYSQL_HOST: "mysql"
-        MYSQL_PASSWORD: "test123@"
+        MYSQL_PASSWORD: "admin"
         MYSQL_DATABASE: "connect_db"
         PORT: 8888
         LOGGER_LEVEL: debug
@@ -21,11 +19,10 @@ services:
     depends_on:
         - mysql
   mysql:
+    platform: linux/x86_64 # just mac m1
     image: "mysql:5.7.37"
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "admin"
-      MYSQL_USER: "root"
-      MYSQL_PASSWORD: "test123@"
       MYSQL_DATABASE: "connect_db"
