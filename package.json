@@ -9,7 +9,10 @@
   "scripts": {
     "dev": "nodemon src/index",
     "start": "node src/index",
-    "test": "jest"
+    "test": "jest",
+    "migration:run": "sequelize db:migrate",
+    "migration:undo": "sequelize db:migrate:undo",
+    "migration:undo:all": "sequelize db:migrate:undo:all"
   },
   "dependencies": {
     "cors": "^2.8.5",
