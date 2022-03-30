@@ -21,7 +21,7 @@ Connect.init(
     },
     {
         sequelize,
-        charset: 'utf8',
+        modelName: 'connect',
         timestamps: true,
         freezeTableName: true
     }

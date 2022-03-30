@@ -28,7 +28,7 @@ ConnectCulto.init(
     },
     {
         sequelize,
-        charset: 'utf8',
+        modelName: 'connectCulto',
         timestamps: true,
         freezeTableName: true
     }

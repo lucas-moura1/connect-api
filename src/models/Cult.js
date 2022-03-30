@@ -21,7 +21,7 @@ Culto.init(
     },
     {
         sequelize,
-        charset: 'utf8',
+        modelName: 'culto',
         timestamps: true,
         freezeTableName: true
     }

@@ -4,10 +4,10 @@ import Culto from './Cult.js'
 import ConnectCulto from './ConnectCult.js'
 
 Connect.belongsToMany(Responsavel,
-    { through: 'ConnectResponsavel' }
+    { through: 'connectResponsavel' }
 )
 Responsavel.belongsToMany(Connect,
-    { through: 'ConnectResponsavel' }
+    { through: 'connectResponsavel' }
 )
 
 Culto.belongsToMany(Connect,

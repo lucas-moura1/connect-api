@@ -25,8 +25,7 @@ Responsavel.init(
     },
     {
         sequelize,
-        // modelName: 'responsavel',
-        charset: 'utf8',
+        modelName: 'responsavel',
         timestamps: true,
         freezeTableName: true
     }
