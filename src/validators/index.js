@@ -1,14 +1,16 @@
 import * as yup from 'yup'
 
+const telefoneSchema = yup
+    .string()
+    .required()
+    .min(11)
+
 const responsableSchema = yup.object().shape({
     nome: yup
         .string()
         .required()
         .min(2),
-    telefone: yup
-        .string()
-        .required()
-        .min(11),
+    telefone: telefoneSchema,
     grupoPais: yup
         .boolean()
         .required()
@@ -23,6 +25,7 @@ const connectSchema = yup.object().shape({
         .string()
         .matches(/(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/)
         .required(),
+    telefone: telefoneSchema,
     responsavels: yup.array().of(responsableSchema)
 })
 
@@ -49,7 +52,10 @@ const connectCultoSchema = yup.object().shape({
         .number()
         .required()
         .positive()
-        .integer()
+        .integer(),
+    observacoes: yup
+        .string()
+        .notRequired()
 })
 
 export {

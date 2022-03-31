@@ -15,6 +15,10 @@ module.exports = {
                 type: DataTypes.STRING,
                 allowNull: false
             },
+            telefone: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
             createdAt: {
                 type: DataTypes.DATE,
                 allowNull: false

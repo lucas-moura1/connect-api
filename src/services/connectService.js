@@ -28,10 +28,15 @@ const createConnect = async (connectDatas) => {
             hasResponsableRelationship
         )
 
+        const connectCultDatas = {
+            numeroPulseira: connectDatas.numeroPulseira,
+            observacoes: connectDatas.observacoes
+        }
+
         const connectCult = await connectCultService.createConnectCult(
             connect,
             connectDatas.cultoId,
-            connectDatas.numeroPulseira
+            connectCultDatas
         )
 
         return connectCult || connect

@@ -18,11 +18,11 @@ const getAll = async () => {
     }
 }
 
-const create = async ({ connectDatas, cultoDatas, numeroPulseira }) => {
+const create = async ({ connectDatas, cultoDatas, numeroPulseira, observacoes }) => {
     try {
         logger.info('[CONNECT REPOSITORY] Creating a connect cult')
 
-        const pulseiraData = { through: { numeroPulseira } }
+        const pulseiraData = { through: { numeroPulseira, observacoes } }
 
         const connectCult = await connectDatas.addCulto(cultoDatas, pulseiraData)
 

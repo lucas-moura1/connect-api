@@ -24,6 +24,10 @@ ConnectCulto.init(
         numeroPulseira: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        observacoes: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     },
     {
