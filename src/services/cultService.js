@@ -21,7 +21,7 @@ const getCult = async (cultId, query) => {
     try {
         logger.info(`[CULT SERVICE] Process to get cult with id: ${cultId}`)
 
-        const hasRelationship = !!query?.relationship
+        const hasRelationship = query?.relationship === ('1' || 'true')
 
         const cult = await cultRepository.getOne(cultId, hasRelationship)
 
