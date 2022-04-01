@@ -1,10 +1,7 @@
 const {
     NODE_ENV,
     PORT,
-    MYSQL_DATABASE,
-    MYSQL_USER,
-    MYSQL_PASSWORD,
-    MYSQL_HOST
+    CLEARDB_DATABASE_URL
 } = process.env
 
 const IS_TEST = NODE_ENV === 'test'
@@ -15,8 +12,5 @@ export {
     IS_TEST,
     LOGGER_LEVEL,
     PORT,
-    MYSQL_DATABASE,
-    MYSQL_USER,
-    MYSQL_PASSWORD,
-    MYSQL_HOST
+    CLEARDB_DATABASE_URL
 }

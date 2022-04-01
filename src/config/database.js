@@ -1,20 +1,7 @@
 import {
-    MYSQL_DATABASE,
-    MYSQL_USER,
-    MYSQL_PASSWORD,
-    MYSQL_HOST
+    CLEARDB_DATABASE_URL
 } from './index.js'
 
-export default {
-    database: MYSQL_DATABASE || 'connect_db',
-    host: MYSQL_HOST || 'localhost',
-    username: MYSQL_USER || 'root',
-    password: MYSQL_PASSWORD || 'admin',
-    dialect: 'mysql',
-    define: {
-        charset: 'utf8',
-        dialectOptions: {
-            collate: 'utf8_general_ci'
-        }
-    }
-}
+const databaseUrl = CLEARDB_DATABASE_URL || 'mysql://root:admin@localhost:3306/connect_db'
+
+export default { url: databaseUrl }

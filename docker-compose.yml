@@ -8,10 +8,7 @@ services:
         - /usr/app/node_modules
     environment:
         NODE_ENV: "development"
-        MYSQL_USER: "root"
-        MYSQL_HOST: "mysql"
-        MYSQL_PASSWORD: "admin"
-        MYSQL_DATABASE: "connect_db"
+        CLEARDB_DATABASE_URL: mysql://root:admin@mysql/connect_db
         PORT: 8888
         LOGGER_LEVEL: debug
     ports:
