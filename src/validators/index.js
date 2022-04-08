@@ -23,7 +23,7 @@ const connectSchema = yup.object().shape({
         .min(2),
     dataNascimento: yup
         .string()
-        .matches(/(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/)
+        .matches(/(1\d|2\d)\d\d[- /.](0[\d]|1[012])[- /.](0[\d]|[12][\d]|3[01])/)
         .required(),
     telefone: telefoneSchema,
     responsavels: yup.array().of(responsableSchema)
@@ -32,7 +32,7 @@ const connectSchema = yup.object().shape({
 const cultSchema = yup.object().shape({
     data: yup
         .string()
-        .matches(/(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/)
+        .matches(/(1\d|2\d)\d\d[- /.](0[\d]|1[012])[- /.](0[\d]|[12][\d]|3[01])/)
         .required(),
     horario: yup
         .string()
