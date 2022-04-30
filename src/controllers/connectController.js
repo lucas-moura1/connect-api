@@ -1,6 +1,6 @@
 import logger from '../config/logger.js'
 import * as connectService from '../services/connectService.js'
-import { connectCultoSchema } from '../validators/index.js'
+import { newConnectCultoSchema } from '../validators/index.js'
 
 const getAllConnectors = async (req, res) => {
     try {
@@ -24,7 +24,7 @@ const createConnect = async (req, res) => {
 
         const body = req.body
 
-        await connectCultoSchema.validate(body)
+        await newConnectCultoSchema.validate(body)
 
         const response = await connectService.createConnect(body)
 
