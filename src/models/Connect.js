@@ -15,7 +15,7 @@ Connect.init(
             allowNull: false
         },
         dataNascimento: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         telefone: {

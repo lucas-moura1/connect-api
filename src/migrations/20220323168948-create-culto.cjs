@@ -8,7 +8,7 @@ module.exports = {
                 primaryKey: true
             },
             data: {
-                type: DataTypes.STRING,
+                type: DataTypes.DATEONLY,
                 allowNull: false
             },
             horario: {
