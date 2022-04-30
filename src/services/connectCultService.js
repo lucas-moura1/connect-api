@@ -19,7 +19,7 @@ const createNewConnectCult = async (connectDatas, cultoId, { numeroPulseira, obs
             observacoes
         }
 
-        const connectCult = await connectCultRepository.create(connectCultoDatas)
+        const connectCult = await connectCultRepository.associate(connectCultoDatas)
 
         return connectCult
     } catch (error) {
@@ -34,7 +34,7 @@ const associateConnectCult = async ({ connectId, cultoId, numeroPulseira, observ
         logger.info('[CONNECT CULT SERVICE] Process to associate a connect')
 
         const arrayGetPromise = [
-            connectRepository.getOne(connectId),
+            connectRepository.getById(connectId),
             cultRepository.getOne(cultoId)
         ]
         const [connectDatas, cultoDatas] = await Promise.all(arrayGetPromise)

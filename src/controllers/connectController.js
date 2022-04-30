@@ -1,12 +1,33 @@
 import logger from '../config/logger.js'
 import * as connectService from '../services/connectService.js'
 import { newConnectCultoSchema } from '../validators/index.js'
+import { RequestError } from '../errors/RequestError.js'
 
 const getAllConnectors = async (req, res) => {
     try {
         logger.info('[CONNECT CONTROLLER] Initializing to get all connectors')
 
         const response = await connectService.getAllConnectors()
+
+        res.json(response)
+    } catch (error) {
+        logger.error(`[CONNECT CONTROLLER] Error >> ${JSON.stringify(error)}`)
+
+        const statusCode = error.statusCode || 409
+
+        res.status(statusCode).json({ error: error.message })
+    }
+}
+
+const getOneConnect = async (req, res) => {
+    try {
+        logger.info('[CONNECT CONTROLLER] Initializing to get all connect')
+
+        const phone = req.params?.phone
+
+        if (!phone) throw new RequestError('Missing field')
+
+        const response = await connectService.getOneConnect(phone)
 
         res.json(response)
     } catch (error) {
@@ -40,5 +61,6 @@ const createConnect = async (req, res) => {
 
 export {
     getAllConnectors,
+    getOneConnect,
     createConnect
 }

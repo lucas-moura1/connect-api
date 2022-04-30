@@ -18,6 +18,41 @@ const getAll = async () => {
     }
 }
 
+const getById = async (id) => {
+    try {
+        logger.info('[CONNECT REPOSITORY] Getting a connect by id')
+
+        const connect = await Connect.findOne({
+            where: { id }
+        })
+
+        return connect
+    } catch (error) {
+        logger.error(
+            `[CONNECT REPOSITORY] Error to getting a connect >> ${JSON.stringify(error)}`
+        )
+
+        throw new RequestError()
+    }
+}
+const getOne = async (phone) => {
+    try {
+        logger.info('[CONNECT REPOSITORY] Getting a connect by phone')
+
+        const connect = await Connect.findOne({
+            where: { telefone: phone }
+        })
+
+        return connect
+    } catch (error) {
+        logger.error(
+            `[CONNECT REPOSITORY] Error to getting a connect >> ${JSON.stringify(error)}`
+        )
+
+        throw new RequestError()
+    }
+}
+
 const create = async (datas, hasRelationship = false) => {
     try {
         logger.info('[CONNECT REPOSITORY] Creating a connect')
@@ -38,5 +73,7 @@ const create = async (datas, hasRelationship = false) => {
 
 export {
     getAll,
+    getById,
+    getOne,
     create
 }
