@@ -205,6 +205,30 @@ Response: {
 }
 ```
 
+#### Listagem por telefone
+
+```
+Endpoint: /connect/:phone
+Method: GET
+Headers: {}
+Query: {}
+Params: { "phone": "xxxxxxxxxxx"}
+Body: {}
+
+Response: {
+    status: 200,
+    body: {
+            "id": 1,
+            "nome": "dd/mm/yyyy",
+            "dataNascimento": "dd/mm/yyyy",
+            "telefone": "xxxxxxxxxxx",
+            "responsavels": [<Connect>]
+            "createdAt": <data_criação>,
+            "updatedAt": <data_última_atualização>
+    }
+}
+```
+
 ### Responsavel
 #### Criação
 ```
