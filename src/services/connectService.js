@@ -33,7 +33,7 @@ const createConnect = async (connectDatas) => {
             observacoes: connectDatas.observacoes
         }
 
-        const connectCult = await connectCultService.createConnectCult(
+        const connectCult = await connectCultService.createNewConnectCult(
             connect,
             connectDatas.cultoId,
             connectCultDatas
