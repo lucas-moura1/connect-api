@@ -41,8 +41,29 @@ const cultSchema = yup.object().shape({
         .matches(/(10h|18h|20h)/)
 })
 
-const connectCultoSchema = yup.object().shape({
+const newConnectCultoSchema = yup.object().shape({
     connect: connectSchema,
+    cultoId: yup
+        .number()
+        .required()
+        .positive()
+        .integer(),
+    numeroPulseira: yup
+        .number()
+        .required()
+        .positive()
+        .integer(),
+    observacoes: yup
+        .string()
+        .notRequired()
+})
+
+const connectCultoSchema = yup.object().shape({
+    connectId: yup
+        .number()
+        .required()
+        .positive()
+        .integer(),
     cultoId: yup
         .number()
         .required()
@@ -62,5 +83,6 @@ export {
     cultSchema,
     connectSchema,
     responsableSchema,
+    newConnectCultoSchema,
     connectCultoSchema
 }
