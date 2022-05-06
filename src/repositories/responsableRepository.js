@@ -1,4 +1,4 @@
-import { Responsavel } from '../models/index.js'
+import { Responsavel, Connect } from '../models/index.js'
 import logger from '../config/logger.js'
 import { RequestError } from '../errors/RequestError.js'
 
@@ -18,12 +18,13 @@ const getAll = async () => {
     }
 }
 
-const getOne = async (telefone) => {
+const getOne = async (phone) => {
     try {
         logger.info('[RESPONSABLE REPOSITORY] Getting a responsable')
 
         const responsable = await Responsavel.findOne({
-            where: { telefone }
+            where: { telefone: phone },
+            include: Connect
         })
 
         return responsable

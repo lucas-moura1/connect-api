@@ -16,6 +16,20 @@ const getAllResponsables = async () => {
     }
 }
 
+const getOneResponsable = async (phone) => {
+    try {
+        logger.info('[CONNECT SERVICE] Process to get one responsable')
+
+        const responsable = await responsableRepository.getOne(phone)
+
+        return responsable
+    } catch (error) {
+        logger.error(`[CONNECT SERVICE] Error >> ${JSON.stringify(error)}`)
+
+        throw error
+    }
+}
+
 const createResponsable = async (responsableDatas) => {
     try {
         logger.info('[RESPONSABLE SERVICE] Process to create a responsable')
@@ -31,6 +45,7 @@ const createResponsable = async (responsableDatas) => {
 }
 
 export {
+    createResponsable,
     getAllResponsables,
-    createResponsable
+    getOneResponsable
 }

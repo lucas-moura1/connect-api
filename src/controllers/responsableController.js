@@ -1,6 +1,7 @@
 import logger from '../config/logger.js'
 import * as responsableService from '../services/responsableService.js'
 import { responsableSchema } from '../validators/index.js'
+import { RequestError } from '../errors/RequestError.js'
 
 const getAllResponsables = async (req, res) => {
     try {
@@ -18,7 +19,27 @@ const getAllResponsables = async (req, res) => {
     }
 }
 
-const createConnect = async (req, res) => {
+const getOneResponsable = async (req, res) => {
+    try {
+        logger.info('[CONNECT CONTROLLER] Initializing to get one responsable')
+
+        const phone = req.params?.phone
+
+        if (!phone) throw new RequestError('Missing field')
+
+        const response = await responsableService.getOneResponsable(phone)
+
+        res.json(response)
+    } catch (error) {
+        logger.error(`[CONNECT CONTROLLER] Error >> ${JSON.stringify(error)}`)
+
+        const statusCode = error.statusCode || 409
+
+        res.status(statusCode).json({ error: error.message })
+    }
+}
+
+const createResponsable = async (req, res) => {
     try {
         logger.info('[RESPONSABLE CONTROLLER] Initializing to save new responsable')
 
@@ -39,6 +60,7 @@ const createConnect = async (req, res) => {
 }
 
 export {
+    createResponsable,
     getAllResponsables,
-    createConnect
+    getOneResponsable
 }

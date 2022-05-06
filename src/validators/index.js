@@ -25,7 +25,7 @@ const connectSchema = yup.object().shape({
         .string()
         .matches(/(1\d|2\d)\d\d[- /.](0[\d]|1[012])[- /.](0[\d]|[12][\d]|3[01])/)
         .required(),
-    telefone: telefoneSchema,
+    telefone: telefoneSchema.notRequired(),
     responsavels: yup.array().of(responsableSchema)
 })
 

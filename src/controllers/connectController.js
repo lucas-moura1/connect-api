@@ -21,7 +21,7 @@ const getAllConnectors = async (req, res) => {
 
 const getOneConnect = async (req, res) => {
     try {
-        logger.info('[CONNECT CONTROLLER] Initializing to get all connect')
+        logger.info('[CONNECT CONTROLLER] Initializing to get one connect')
 
         const phone = req.params?.phone
 
