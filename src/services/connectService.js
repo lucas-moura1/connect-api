@@ -16,11 +16,11 @@ const getAllConnectors = async () => {
     }
 }
 
-const getOneConnect = async (phone) => {
+const getOneConnect = async (name) => {
     try {
         logger.info('[CONNECT SERVICE] Process to get one connect')
 
-        const connect = await connectRepository.getOne(phone)
+        const connect = await connectRepository.getOne(name)
 
         return connect
     } catch (error) {

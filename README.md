@@ -49,7 +49,8 @@ responsavelId: <Responsavel>
 
 ### Connect
 - Criação;
-- Listagem de todas os dados.
+- Listagem de todas os dados;
+- Listagem por nome.
 
 ### Responsavel
 - Criação.
@@ -67,18 +68,18 @@ Headers: {
 Query: {}
 Params: {}
 Body: {
-    "data": "dd/mm/yyyy",
+    "data": yyyy-mm-dd,
 	"horario": "10h"
 }
 
 Response: {
     status: 200,
     body: {
-        "id": <id_banco>,
-        "data": "dd/mm/yyyy",
-        "horario": "10h",
-        "updatedAt": <data_criação>,
-        "createdAt": <data_última_atualização>
+        "id": <id>,
+        "data": <date>,
+        "horario": <string>,
+        "updatedAt": <datetime>,
+        "createdAt": <datetime>
     }
 }
 ```
@@ -96,12 +97,12 @@ Response: {
     status: 200,
     body: [
         {
-            "id": 1,
-            "data": "dd/mm/yyyy",
-            "horario": "10h",
+            "id": <int>,
+            "data": <date>,
+            "horario": <string>,
             "connects": [<Connect>]
-            "createdAt": <data_criação>,
-            "updatedAt": <data_última_atualização>
+            "createdAt": <datetime>,
+            "updatedAt": <datetime>
         }
     ]
 }
@@ -125,15 +126,15 @@ Response: {
     status: 200,
     body: [
         {
-            "id": 1,
-            "data": "dd/mm/yyyy",
-            "horario": "10h",
+            "id": <int>,
+            "data": <date>,
+            "horario": <string>,
             "connects": [
                 <Connect>,
                 <Responsavel>
             ]
-            "createdAt": <data_criação>,
-            "updatedAt": <data_última_atualização>
+            "createdAt": <datetime>,
+            "updatedAt": <datetime>
         }
     ]
 }
@@ -154,7 +155,7 @@ Body: {
 	"numeroPulseira": 1290,
 	"connect": {
 		"nome": "Lucas",
-		"dataNascimento": "dd/mm/yyyy",
+		"dataNascimento": yyyy-mm-dd,
 		"telefone": "xxxxxxxxxxx",
 		"responsavels": [{
 			"nome": "Lucas",
@@ -162,19 +163,19 @@ Body: {
 			"grupoPais": true
 		}]
 	},
-	"observacoes": ""
+	"observacoes": <string>
 }
 
 Response: {
     status: 200,
     body: [
 	{
-		"numeroPulseira": 1290,
-		"observacoes": "",
+		"numeroPulseira": <int>,
+		"observacoes": <string>,
 		"connectId": <int>,
-		"cultoId": 1,
-		"createdAt": "2022-03-31T00:44:01.088Z",
-		"updatedAt": "2022-03-31T00:44:01.088Z"
+		"cultoId": <int>,
+		"createdAt": <datetime>,
+		"updatedAt": <datetime>
 	}
 ]
 }
@@ -193,39 +194,39 @@ Response: {
     status: 200,
     body: [
         {
-            "id": 1,
-            "nome": "dd/mm/yyyy",
-            "dataNascimento": "dd/mm/yyyy",
-            "telefone": "xxxxxxxxxxx",
+            "id": <int>,
+            "nome": <date>,
+            "dataNascimento": <date>,
+            "telefone": <string>,
             "responsavels": [<Connect>]
-            "createdAt": <data_criação>,
-            "updatedAt": <data_última_atualização>
+            "createdAt": <datetime>,
+            "updatedAt": <datetime>
         }
     ]
 }
 ```
 
-#### Listagem por telefone
+#### Listagem por nome
 
 ```
-Endpoint: /connect/:phone
+Endpoint: /connect/:name
 Method: GET
 Headers: {}
 Query: {}
-Params: { "phone": "xxxxxxxxxxx"}
+Params: { "name": <string>}
 Body: {}
 
 Response: {
     status: 200,
-    body: {
-            "id": 1,
-            "nome": "dd/mm/yyyy",
-            "dataNascimento": "dd/mm/yyyy",
-            "telefone": "xxxxxxxxxxx",
+    body: [{
+            "id": <int>,
+            "nome": <date>,
+            "dataNascimento": <date>,
+            "telefone": <string>,
             "responsavels": [<Connect>]
-            "createdAt": <data_criação>,
-            "updatedAt": <data_última_atualização>
-    }
+            "createdAt": <datetime>,
+            "updatedAt": <datetime>
+    }]
 }
 ```
 
@@ -243,7 +244,6 @@ Body: {
     "nome": "Lucas",
     "telefone": "xxxxxxxxxxx",
     "grupoPais": true
-	}
 }
 
 Response: {
@@ -251,11 +251,43 @@ Response: {
     body: [
 	{
 		"id": <int>,
-		"nome": "Lucas",
-		"telefone": "xxxxxxxxxxx",
-        "grupoPais": true,
-		"createdAt": "2022-03-31T00:44:01.088Z",
-		"updatedAt": "2022-03-31T00:44:01.088Z"
+		"nome": <string>,
+		"telefone": <string>,
+        "grupoPais": <boolean>,
+		"createdAt": <datetime>,
+		"updatedAt": <datetime>
+	}
+]
+}
+```
+
+### ConnectCulto
+#### Associação de um connect existente a um culto
+```
+Endpoint: /connectCult
+Method: POST
+Headers: {
+    "Content-Type": "application/json"
+}
+Query: {}
+Params: {}
+Body: {
+    "cultoId": 2,
+	"numeroPulseira": 1350,
+	"connectId": 1,
+	"observacoes": ""
+}
+
+Response: {
+    status: 200,
+    body: [
+	{
+		"numeroPulseira": <int>,
+		"observacoes": <string>,
+		"connectId": <int>,
+		"cultoId": <int>,
+		"createdAt": <datetime>,
+		"updatedAt": <datetime>
 	}
 ]
 }

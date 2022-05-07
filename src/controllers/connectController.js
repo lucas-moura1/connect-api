@@ -23,11 +23,11 @@ const getOneConnect = async (req, res) => {
     try {
         logger.info('[CONNECT CONTROLLER] Initializing to get one connect')
 
-        const phone = req.params?.phone
+        const name = req.params?.name
 
-        if (!phone) throw new RequestError('Missing field')
+        if (!name) throw new RequestError('Missing field')
 
-        const response = await connectService.getOneConnect(phone)
+        const response = await connectService.getOneConnect(name)
 
         res.json(response)
     } catch (error) {

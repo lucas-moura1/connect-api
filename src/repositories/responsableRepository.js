@@ -41,9 +41,11 @@ const create = async (datas) => {
     try {
         logger.info('[RESPONSABLE REPOSITORY] Creating a responsable')
 
-        const responsable = new Responsavel(datas)
+        const [responsable, created] = await Responsavel.findOrCreate({
+            where: datas
+        })
 
-        await responsable.save()
+        if (!created) logger.info('[CULT REPOSITORY] Responsable already created')
 
         return responsable
     } catch (error) {

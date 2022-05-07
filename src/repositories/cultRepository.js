@@ -52,7 +52,11 @@ const create = async (datas) => {
     try {
         logger.info('[CULT REPOSITORY] Creating a cult')
 
-        const cult = await Culto.create(datas)
+        const [cult, created] = await Culto.findOrCreate({
+            where: datas
+        })
+
+        if (!created) logger.info('[CULT REPOSITORY] Cult already created')
 
         return cult
     } catch (error) {

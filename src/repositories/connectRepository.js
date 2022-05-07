@@ -1,3 +1,4 @@
+import { Op } from 'sequelize'
 import { Connect, Responsavel } from '../models/index.js'
 import logger from '../config/logger.js'
 import { RequestError } from '../errors/RequestError.js'
@@ -35,12 +36,16 @@ const getById = async (id) => {
         throw new RequestError()
     }
 }
-const getOne = async (phone) => {
+const getOne = async (name) => {
     try {
-        logger.info('[CONNECT REPOSITORY] Getting a connect by phone')
+        logger.info('[CONNECT REPOSITORY] Getting a connect by name')
 
-        const connect = await Connect.findOne({
-            where: { telefone: phone }
+        const connect = await Connect.findAll({
+            where: {
+                nome: {
+                    [Op.like]: `%${name}%`
+                }
+            }
         })
 
         return connect

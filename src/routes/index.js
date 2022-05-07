@@ -15,11 +15,11 @@ route.get('/cult/:id', cultController.getCult)
 route.post('/cult', cultController.createCult)
 
 route.get('/connect', connectController.getAllConnectors)
+route.get('/connect/:name', connectController.getOneConnect)
 route.post('/connect', connectController.createConnect)
 
 route.post('/connectCult', connectCultController.associateConnectCult)
 
 route.post('/responsable', responsableController.createResponsable)
-route.get('/responsable/:phone', responsableController.getOneResponsable)
 
 export default route
