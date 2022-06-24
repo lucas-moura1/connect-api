@@ -1,7 +1,5 @@
 import logger from '../config/logger.js'
 import * as cultRepository from '../repositories/cultRepository.js'
-import { RequestError } from '../errors/RequestError.js'
-import * as responsableService from './responsableService.js'
 
 const getAllCults = async () => {
     try {
@@ -24,6 +22,8 @@ const getCult = async (cultId, query) => {
         const hasRelationship = query?.relationship === ('1' || 'true')
 
         const cult = await cultRepository.getOne(cultId, hasRelationship)
+
+        if (hasRelationship) cult.dataValues.amountConnect = cult.connects.length
 
         return cult
     } catch (error) {

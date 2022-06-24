@@ -12,7 +12,7 @@ const getAll = async () => {
         return connectors
     } catch (error) {
         logger.error(
-            `[CONNECT REPOSITORY] Error to getting all connectors >> ${JSON.stringify(error)}`
+            `[CONNECT REPOSITORY] Error to getting all connectors >> ${error}`
         )
 
         throw new RequestError()
@@ -30,7 +30,7 @@ const getById = async (id) => {
         return connect
     } catch (error) {
         logger.error(
-            `[CONNECT REPOSITORY] Error to getting a connect >> ${JSON.stringify(error)}`
+            `[CONNECT REPOSITORY] Error to getting a connect >> ${error}`
         )
 
         throw new RequestError()
@@ -51,7 +51,7 @@ const getOne = async (name) => {
         return connect
     } catch (error) {
         logger.error(
-            `[CONNECT REPOSITORY] Error to getting a connect >> ${JSON.stringify(error)}`
+            `[CONNECT REPOSITORY] Error to getting a connect >> ${error}`
         )
 
         throw new RequestError()
@@ -69,7 +69,7 @@ const create = async (datas, hasRelationship = false) => {
         return connect
     } catch (error) {
         logger.error(
-            `[CONNECT REPOSITORY] Error to creating a connect >> ${JSON.stringify(error)}`
+            `[CONNECT REPOSITORY] Error to creating a connect >> ${error}`
         )
 
         throw new RequestError(error.message)

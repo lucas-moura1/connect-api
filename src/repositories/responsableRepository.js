@@ -11,7 +11,7 @@ const getAll = async () => {
         return responsaveis
     } catch (error) {
         logger.error(
-            `[RESPONSABLE REPOSITORY] Error to getting all responsables >> ${JSON.stringify(error)}`
+            `[RESPONSABLE REPOSITORY] Error to getting all responsables >> ${error}`
         )
 
         throw new RequestError()
@@ -30,7 +30,7 @@ const getOne = async (phone) => {
         return responsable
     } catch (error) {
         logger.error(
-            `[RESPONSABLE REPOSITORY] Error to getting a responsable >> ${JSON.stringify(error)}`
+            `[RESPONSABLE REPOSITORY] Error to getting a responsable >> ${error}`
         )
 
         throw new RequestError()
@@ -50,7 +50,7 @@ const create = async (datas) => {
         return responsable
     } catch (error) {
         logger.error(
-            `[RESPONSABLE REPOSITORY] Error create a responsable >> ${JSON.stringify(error)}`
+            `[RESPONSABLE REPOSITORY] Error create a responsable >> ${error}`
         )
 
         throw new RequestError(error.message)

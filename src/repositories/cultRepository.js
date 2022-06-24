@@ -15,7 +15,7 @@ const getAll = async () => {
         return cults
     } catch (error) {
         logger.error(
-            `[CULT REPOSITORY] Error to getting all cults >> ${JSON.stringify(error)}`
+            `[CULT REPOSITORY] Error to getting all cults >> ${error}`
         )
 
         throw new RequestError()
@@ -41,7 +41,7 @@ const getOne = async (id, hasRelationship = false) => {
         return cult
     } catch (error) {
         logger.error(
-            `[CULT REPOSITORY] Error to getting a cult >> ${JSON.stringify(error)}`
+            `[CULT REPOSITORY] Error to getting a cult >> ${error}`
         )
 
         throw new RequestError()
@@ -61,7 +61,7 @@ const create = async (datas) => {
         return cult
     } catch (error) {
         logger.error(
-            `[CULT REPOSITORY] Error to creating cult >> ${JSON.stringify(error)}`
+            `[CULT REPOSITORY] Error to creating cult >> ${error}`
         )
 
         throw new RequestError(error.message)
