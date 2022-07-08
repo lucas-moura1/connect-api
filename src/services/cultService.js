@@ -23,7 +23,7 @@ const getCult = async (cultId, query) => {
 
         const cult = await cultRepository.getOne(cultId, hasRelationship)
 
-        if (hasRelationship) cult.dataValues.amountConnect = cult.connects.length
+        if (hasRelationship && cult) cult.dataValues.amountConnect = cult.connects.length
 
         return cult
     } catch (error) {

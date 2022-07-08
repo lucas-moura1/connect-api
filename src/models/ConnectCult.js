@@ -32,7 +32,7 @@ ConnectCulto.init(
     },
     {
         sequelize,
-        modelName: 'connectCulto',
+        modelName: 'connect_culto',
         timestamps: true,
         freezeTableName: true
     }
