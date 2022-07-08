@@ -32,13 +32,13 @@ const connectSchema = yup.object().shape({
 const cultSchema = yup.object().shape({
     data: yup
         .string()
-        .matches(/(1\d|2\d)\d\d[- /.](0[\d]|1[012])[- /.](0[\d]|[12][\d]|3[01])/)
+        .matches(/(1\d|2\d)\d\d[- /.](0[\d]|1[012])[- /.](0[\d]|[12][\d]|3[01])/, 'Data Format is not correct')
         .required(),
     horario: yup
         .string()
         .required()
         .length(3)
-        .matches(/(10h|18h|20h)/)
+        .matches(/(10h|18h|20h)/, "Horario field should be '10h', '18h' or '20h'")
 })
 
 const newConnectCultoSchema = yup.object().shape({
@@ -81,7 +81,6 @@ const connectCultoSchema = yup.object().shape({
 
 export {
     cultSchema,
-    connectSchema,
     responsableSchema,
     newConnectCultoSchema,
     connectCultoSchema

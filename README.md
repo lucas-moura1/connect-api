@@ -307,3 +307,14 @@ Para a execução do projeto é necessário ter instalado na máquina o `Docker 
 Para acessar a API diretamente é preciso acessar http://localhost:8888 + o endpoint.
 
 Ex: http://localhost:8888/heath
+
+#### Para executar os testes
+
+Para rodar os testes unitários e integrados é preciso seguir os seguintes comandos abaixo:
+
+- Alterar a variável de ambiente chamado `NODE_ENV` dentro do arquivo [docker-compose.yml](docker-compose.yml) de development para `test`;
+- `docker-compose up` para rodar a aplicação;
+- Abra uma nova aba no terminal e execute `docker ps` para obter `id` do container da API REST;
+- `docker exec -it connect_api bash` para executar o bash e "entrar" no container da aplicação principal;
+- `yarn test` para executar os testes.
+
