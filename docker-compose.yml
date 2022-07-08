@@ -1,6 +1,7 @@
 version: '3.6'
 services:
   connect_api:
+    container_name: connect_api
     build: .
     command: yarn dev
     volumes:
