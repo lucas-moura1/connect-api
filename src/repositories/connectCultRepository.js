@@ -1,7 +1,12 @@
 import logger from '../config/logger.js'
 import { RequestError } from '../errors/RequestError.js'
 
-const associate = async ({ connectDatas, cultoDatas, numeroPulseira, observacoes }) => {
+const associate = async ({
+    connectDatas,
+    cultDatas: cultoDatas,
+    braceletNumber: numeroPulseira,
+    observations: observacoes
+}) => {
     try {
         logger.info('[CONNECT REPOSITORY] Creating a connect cult')
 

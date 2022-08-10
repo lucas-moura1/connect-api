@@ -1,10 +1,9 @@
 import logger from '../config/logger.js'
 import * as cultRepository from '../repositories/cultRepository.js'
+import { RequestError } from '../errors/RequestError.js'
 
 const getAllCults = async () => {
     try {
-        logger.info('[CULT SERVICE] Process to get all cults')
-
         const cults = await cultRepository.getAll()
 
         return cults
@@ -17,13 +16,13 @@ const getAllCults = async () => {
 
 const getCult = async (cultId, query) => {
     try {
-        logger.info(`[CULT SERVICE] Process to get cult with id: ${cultId}`)
-
         const hasRelationship = query?.relationship === '1' || query?.relationship === 'true'
 
         const cult = await cultRepository.getOne(cultId, hasRelationship)
 
-        if (hasRelationship && cult) cult.dataValues.amountConnect = cult.connects.length
+        if (!cult) throw new RequestError('Not Found', 404)
+
+        if (hasRelationship) cult.dataValues.amountConnect = cult.connects.length
 
         return cult
     } catch (error) {
@@ -35,8 +34,6 @@ const getCult = async (cultId, query) => {
 
 const createCult = async (cultDatas) => {
     try {
-        logger.info('[CULT SERVICE] Process to create a cult')
-
         const cult = await cultRepository.create(cultDatas)
 
         return cult

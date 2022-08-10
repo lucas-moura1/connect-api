@@ -1,11 +1,9 @@
 import logger from '../config/logger.js'
 import * as connectRepository from '../repositories/connectRepository.js'
-import * as connectCultService from './connectCultService.js'
+import { RequestError } from '../errors/RequestError.js'
 
-const getAllConnectors = async () => {
+const getAllConnects = async () => {
     try {
-        logger.info('[CONNECT SERVICE] Process to get all connectors')
-
         const connectors = await connectRepository.getAll()
 
         return connectors
@@ -18,9 +16,9 @@ const getAllConnectors = async () => {
 
 const getOneConnect = async (name) => {
     try {
-        logger.info('[CONNECT SERVICE] Process to get one connect')
-
         const connect = await connectRepository.getOne(name)
+
+        if (connect.length === 0) throw new RequestError('Not Found', 404)
 
         return connect
     } catch (error) {
@@ -32,27 +30,14 @@ const getOneConnect = async (name) => {
 
 const createConnect = async (connectDatas) => {
     try {
-        logger.info('[CONNECT SERVICE] Process to create a connect')
-
-        const hasResponsableRelationship = !!connectDatas.connect.responsavels
+        const hasResponsableRelationship = !!connectDatas?.responsavels
 
         const connect = await connectRepository.create(
-            connectDatas.connect,
+            connectDatas,
             hasResponsableRelationship
         )
 
-        const connectCultDatas = {
-            numeroPulseira: connectDatas.numeroPulseira,
-            observacoes: connectDatas.observacoes
-        }
-
-        const connectCult = await connectCultService.createNewConnectCult(
-            connect,
-            connectDatas.cultoId,
-            connectCultDatas
-        )
-
-        return connectCult || connect
+        return connect
     } catch (error) {
         logger.error(`[CONNECT SERVICE] Error >> ${JSON.stringify(error)}`)
 
@@ -61,7 +46,7 @@ const createConnect = async (connectDatas) => {
 }
 
 export {
-    getAllConnectors,
+    getAllConnects,
     getOneConnect,
     createConnect
 }
