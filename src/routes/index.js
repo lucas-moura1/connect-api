@@ -14,8 +14,8 @@ route.get('/cult', cultController.getAllCult)
 route.get('/cult/:id', cultController.getCult)
 route.post('/cult', cultController.createCult)
 
-route.get('/connect', connectController.getAllConnectors)
-route.get('/connect/:name', connectController.getOneConnect)
+route.get('/connect', connectController.getAllConnects)
+route.get('/connect/:name', connectController.getConnect)
 route.post('/connect', connectCultController.createConnectCult)
 route.post('/connect/associate', connectCultController.associateConnectCult)
 

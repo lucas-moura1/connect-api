@@ -14,7 +14,7 @@ const getAllConnects = async () => {
     }
 }
 
-const getOneConnect = async (name) => {
+const getConnect = async (name) => {
     try {
         const connect = await connectRepository.getOne(name)
 
@@ -47,6 +47,6 @@ const createConnect = async (connectDatas) => {
 
 export {
     getAllConnects,
-    getOneConnect,
+    getConnect,
     createConnect
 }

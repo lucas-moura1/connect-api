@@ -72,7 +72,7 @@ const create = async (datas, hasRelationship = false) => {
             `[CONNECT REPOSITORY] Error to creating a connect >> ${error}`
         )
 
-        throw new RequestError(error.message)
+        throw new RequestError(error?.message)
     }
 }
 

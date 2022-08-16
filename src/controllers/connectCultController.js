@@ -23,9 +23,9 @@ const associateConnectCult = async (req, res) => {
     } catch (error) {
         logger.error(`[CONNECT CULT CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 
@@ -50,9 +50,9 @@ const createConnectCult = async (req, res) => {
     } catch (error) {
         logger.error(`[CONNECT CULT CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 

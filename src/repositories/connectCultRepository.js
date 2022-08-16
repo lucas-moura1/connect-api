@@ -20,7 +20,7 @@ const associate = async ({
             `[CONNECT REPOSITORY] Error to creating a connect cult >> ${error}`
         )
 
-        throw new RequestError(error.message)
+        throw new RequestError(error?.message)
     }
 }
 

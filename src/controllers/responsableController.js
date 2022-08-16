@@ -13,9 +13,9 @@ const getAllResponsables = async (req, res) => {
     } catch (error) {
         logger.error(`[RESPONSABLE CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 
@@ -33,9 +33,9 @@ const getOneResponsable = async (req, res) => {
     } catch (error) {
         logger.error(`[CONNECT CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 
@@ -53,9 +53,9 @@ const createResponsable = async (req, res) => {
     } catch (error) {
         logger.error(`[RESPONSABLE CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 
