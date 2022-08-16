@@ -25,7 +25,7 @@ describe('Test Connect Service', () => {
 
         connectRepository.getOne.mockResolvedValue([{}])
 
-        const response = await connectService.getOneConnect(connectName)
+        const response = await connectService.getConnect(connectName)
 
         expect(connectRepository.getOne).toHaveBeenCalledWith(connectName)
         expect(response).not.toBeNull()
@@ -34,7 +34,7 @@ describe('Test Connect Service', () => {
     test('Test error to getting one connect', async () => {
         connectRepository.getOne.mockRejectedValue(new Error())
 
-        expect(connectService.getOneConnect()).rejects.toThrow()
+        expect(connectService.getConnect()).rejects.toThrow()
         expect(connectRepository.getOne).toHaveBeenCalled()
     })
 

@@ -23,7 +23,7 @@ describe('Test Cult Service', () => {
         const cultId = 2
         const query = {}
 
-        cultRepository.getOne.mockResolvedValue([{}])
+        cultRepository.getOne.mockResolvedValue({})
 
         await cultService.getCult(cultId, query)
 
@@ -51,27 +51,27 @@ describe('Test Cult Service', () => {
     })
 
     test('Test create a cult', async () => {
-        const mockCurrencyDatas = {
+        const mockCultDatas = {
             data: '2022-06-01',
             horario: '10h'
         }
 
-        cultRepository.create.mockResolvedValue([{}])
+        cultRepository.create.mockResolvedValue({})
 
-        await cultService.createCult(mockCurrencyDatas)
+        await cultService.createCult(mockCultDatas)
 
-        expect(cultRepository.create).toHaveBeenCalledWith(mockCurrencyDatas)
+        expect(cultRepository.create).toHaveBeenCalledWith(mockCultDatas)
     })
 
     test('Test error to creating a cult', async () => {
-        const mockCurrencyDatas = {
+        const mockCultDatas = {
             data: '2022-06-01',
             horario: '10h'
         }
 
         cultRepository.create.mockRejectedValue(new Error())
 
-        expect(cultService.createCult(mockCurrencyDatas)).rejects.toThrow()
+        expect(cultService.createCult(mockCultDatas)).rejects.toThrow()
         expect(cultRepository.create).toHaveBeenCalled()
     })
 })
