@@ -2,21 +2,29 @@ import logger from '../config/logger.js'
 import * as connectCultRepository from '../repositories/connectCultRepository.js'
 import * as cultRepository from '../repositories/cultRepository.js'
 import * as connectRepository from '../repositories/connectRepository.js'
+import * as connectService from './connectService.js'
 import { RequestError } from '../errors/RequestError.js'
 
-const createNewConnectCult = async (connectDatas, cultoId, { numeroPulseira, observacoes }) => {
+const createConnectCult = async (payload) => {
     try {
-        logger.info('[CONNECT CULT SERVICE] Process to create a connect cult')
+        const {
+            connect,
+            cultId,
+            braceletNumber,
+            observations
+        } = payload
 
-        if (!cultoId) return false
+        const cultDatas = await cultRepository.getOne(cultId)
 
-        const cultoDatas = await cultRepository.getOne(cultoId)
+        if (!cultDatas) throw new RequestError('Cult Not Found', 404)
+
+        const connectDatas = await connectService.createConnect(connect)
 
         const connectCultoDatas = {
             connectDatas,
-            cultoDatas,
-            numeroPulseira,
-            observacoes
+            cultDatas,
+            braceletNumber,
+            observations
         }
 
         const connectCult = await connectCultRepository.associate(connectCultoDatas)
@@ -29,21 +37,26 @@ const createNewConnectCult = async (connectDatas, cultoId, { numeroPulseira, obs
     }
 }
 
-const associateConnectCult = async ({ connectId, cultoId, numeroPulseira, observacoes = '' }) => {
+const associateConnectCult = async ({
+    connectId,
+    cultId,
+    braceletNumber,
+    observations = ''
+}) => {
     try {
-        logger.info('[CONNECT CULT SERVICE] Process to associate a connect')
-
-        const arrayGetPromise = [
+        const promisseArray = [
             connectRepository.getById(connectId),
-            cultRepository.getOne(cultoId)
+            cultRepository.getOne(cultId)
         ]
-        const [connectDatas, cultoDatas] = await Promise.all(arrayGetPromise)
+        const [connectDatas, cultDatas] = await Promise.all(promisseArray)
+
+        if (!cultDatas || !connectDatas) throw new RequestError('Not Found', 404)
 
         const connectCultoDatas = {
             connectDatas,
-            cultoDatas,
-            numeroPulseira,
-            observacoes
+            cultDatas,
+            braceletNumber,
+            observations
         }
 
         const connectCult = await connectCultRepository.associate(connectCultoDatas)
@@ -57,6 +70,6 @@ const associateConnectCult = async ({ connectId, cultoId, numeroPulseira, observ
 }
 
 export {
-    createNewConnectCult,
+    createConnectCult,
     associateConnectCult
 }

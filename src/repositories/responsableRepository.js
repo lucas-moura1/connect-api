@@ -53,7 +53,7 @@ const create = async (datas) => {
             `[RESPONSABLE REPOSITORY] Error create a responsable >> ${error}`
         )
 
-        throw new RequestError(error.message)
+        throw new RequestError(error?.message)
     }
 }
 

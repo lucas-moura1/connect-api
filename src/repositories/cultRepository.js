@@ -64,7 +64,7 @@ const create = async (datas) => {
             `[CULT REPOSITORY] Error to creating cult >> ${error}`
         )
 
-        throw new RequestError(error.message)
+        throw new RequestError(error?.message)
     }
 }
 

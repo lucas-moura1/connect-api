@@ -13,9 +13,9 @@ const getAllCult = async (req, res) => {
     } catch (error) {
         logger.error(`[CULT CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 
@@ -32,9 +32,9 @@ const getCult = async (req, res) => {
     } catch (error) {
         logger.error(`[CULT CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 
@@ -52,9 +52,9 @@ const createCult = async (req, res) => {
     } catch (error) {
         logger.error(`[CULT CONTROLLER] Error >> ${JSON.stringify(error)}`)
 
-        const statusCode = error.statusCode || 409
+        const statusCode = error?.statusCode || 409
 
-        res.status(statusCode).json({ error: error.message })
+        res.status(statusCode).json({ error: error?.message })
     }
 }
 

@@ -4,8 +4,6 @@ import { RequestError } from '../errors/RequestError.js'
 
 const getAllResponsables = async () => {
     try {
-        logger.info('[RESPONSABLE SERVICE] Process to get all responsables')
-
         const responsables = await responsableRepository.getAll()
 
         return responsables
@@ -18,8 +16,6 @@ const getAllResponsables = async () => {
 
 const getOneResponsable = async (phone) => {
     try {
-        logger.info('[CONNECT SERVICE] Process to get one responsable')
-
         const responsable = await responsableRepository.getOne(phone)
 
         return responsable
@@ -32,8 +28,6 @@ const getOneResponsable = async (phone) => {
 
 const createResponsable = async (responsableDatas) => {
     try {
-        logger.info('[RESPONSABLE SERVICE] Process to create a responsable')
-
         const responsable = await responsableRepository.create(responsableDatas)
 
         return responsable

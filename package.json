@@ -1,6 +1,6 @@
 {
   "name": "connect-api",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "main": "index.js",
   "type": "module",
   "repository": "git@github.com:lucas-moura1/connect-api.git",
