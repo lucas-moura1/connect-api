@@ -1,6 +1,6 @@
 module.exports = {
     async up (queryInterface, DataTypes) {
-        return [
+        return Promise.all([
             queryInterface.changeColumn('connect', 'dataNascimento', {
                 type: DataTypes.DATEONLY
             }),
@@ -12,11 +12,11 @@ module.exports = {
             queryInterface.changeColumn('culto', 'data', {
                 type: DataTypes.DATEONLY
             })
-        ]
+        ])
     },
 
     async down (queryInterface, DataTypes) {
-        return [
+        return Promise.all([
             queryInterface.changeColumn('connect', 'dataNascimento', {
                 type: DataTypes.STRING
             }),
@@ -27,6 +27,6 @@ module.exports = {
             queryInterface.changeColumn('culto', 'data', {
                 type: DataTypes.STRING
             })
-        ]
+        ])
     }
 }
